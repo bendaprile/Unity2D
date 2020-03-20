@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec6ea451548d046ddb869c626e90fe29, type: 3}
+  m_Name: StartingState
+  m_EditorClassIdentifier: 
+  storyText: "This bunker looks like it goes on forever. Up ahead I see one sniper
+    tower\nand a lone sniper up top.\n\nHeavily armored but he could miss if I run
+    fast enough. I could also stick back and try\nto surprise him from afar.\n\nWhat
+    should I do?\n    1. Rush the sniper tower hoping he misses at close range.\n   
+    2. Stay back and try to surprise him."
