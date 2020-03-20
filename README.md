@@ -15,7 +15,7 @@ part of the Complete C# Unity Developer 2D course through Udemy.
 ### Number Wizard Project
 
 * A basic command line number guessing game:
-** The user memorizes a number and then the program will try to guess that number.
+* The user memorizes a number and then the program will try to guess that number.
 
 
 ## Text101
