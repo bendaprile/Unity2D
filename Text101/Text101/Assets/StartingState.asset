@@ -17,3 +17,6 @@ MonoBehaviour:
     fast enough. I could also stick back and try\nto surprise him from afar.\n\nWhat
     should I do?\n    1. Rush the sniper tower hoping he misses at close range.\n   
     2. Stay back and try to surprise him."
+  nextStates:
+  - {fileID: 11400000, guid: 5c63c51dfbccc46a0a3289ddca7547db, type: 2}
+  - {fileID: 11400000, guid: 0409ed654ff014c11b6c83a2721b263c, type: 2}
