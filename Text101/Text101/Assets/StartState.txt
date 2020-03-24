@@ -1,9 +1,0 @@
-﻿This bunker looks like it goes on forever. Up ahead I see one sniper tower
-and a lone sniper up top.
-
-Heavily armored but he could miss if I run fast enough. I could also stick back and try
-to surprise him from afar.
-
-What should I do?
-    1. Rush the sniper tower hoping he misses at close range.
-    2. Stay back and try to surprise him.

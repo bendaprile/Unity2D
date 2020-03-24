@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec6ea451548d046ddb869c626e90fe29, type: 3}
+  m_Name: A5 Game Won
+  m_EditorClassIdentifier: 
+  storyText: 'You win... You''re the best at video games.
+
+
+    1. Play Again?
+
+    2.
+    I don''t need to prove myself again, I already won!'
+  nextStates:
+  - {fileID: 11400000, guid: 4743c9482af074859b41f201dc5581a2, type: 2}
+  - {fileID: 11400000, guid: ffd78948a43854f7d80c6103221ae35c, type: 2}
