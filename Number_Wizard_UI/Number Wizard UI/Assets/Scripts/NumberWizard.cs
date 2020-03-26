@@ -23,47 +23,39 @@ public class NumberWizard : MonoBehaviour
      */
     void StartGame()
     {
-
-        guess = Random.Range(min, max + 1);
-        guessText.text = guess.ToString();
-
-        // Max will never be guessed without this
-        max += 1;
+        Guess();
     }
 
     // This is called when the higher button is pressed
     public void OnPressHigher()
     {
-        GuessUp();
+        // Adding 1 to min means it won't guess that number when higher is pressed
+
+        if (min < max)
+        {
+            min = guess + 1;
+        }
+        Guess();
     }
 
     // This is called when the lower button is pressed
     public void OnPressLower()
     {
-        GuessDown();
-    }
-
-    /*
-     * Function that calculates a new guess higher than the last.
-     */
-    void GuessUp()
-    {
-        min = guess;
-        guess = Random.Range(min, max + 1);
-
-        // Displays the guess in the field that we've specified in Unity
-        guessText.text = guess.ToString();
-    }
-
-    /*
-     * Function that calculates a new guess lower than the last.
-     */ 
-    void GuessDown()
-    {
+        // Subtracting 1 from max means it won't guess that number when lower is pressed
         max = guess;
+        Guess();
+    }
+
+    /*
+     * Function that calculates a new guess
+     */
+    void Guess()
+    {
+
         guess = Random.Range(min, max + 1);
 
         // Displays the guess in the field that we've specified in Unity
         guessText.text = guess.ToString();
     }
+
 }

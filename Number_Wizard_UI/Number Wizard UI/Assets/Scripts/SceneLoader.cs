@@ -22,4 +22,9 @@ public class SceneLoader : MonoBehaviour
         // Loads the first scene in the build
         SceneManager.LoadScene(startingScene);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
