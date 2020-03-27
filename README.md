@@ -10,7 +10,7 @@ part of the Complete C# Unity Developer 2D course through Udemy.
 * A very basic Hello World project. Prints Hello Ben to the console when run.
 
 
-## Number Wizard Console
+## Number_Wizard_Console
 
 ### Number Wizard Project
 
@@ -23,3 +23,14 @@ part of the Complete C# Unity Developer 2D course through Udemy.
 ### Playing With Sprites
 
 * Intro project for adding and manipulating objects in the game space
+
+
+## Number_Wizard_UI
+
+### Number Wizard UI Project
+
+* Project incorporating all aspects of the Number Wizard Console project into a graphical
+user interface.
+
+* Also adds randomness into the game using Random.Range()
+
