@@ -50,6 +50,5 @@ public class Ball : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(xPushVel, yPushVel);
             hasLaunched = true;
         }
-
     }
 }
