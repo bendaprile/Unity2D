@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GameStatus : MonoBehaviour
+public class GameSession : MonoBehaviour
 {
 
     // 1f is realtime, 0.5 is 2x slower and so on
@@ -21,7 +21,7 @@ public class GameStatus : MonoBehaviour
     {
 
         // Determines how many GameStatus objects we currently have in our scene
-        int gameStatusCount = FindObjectsOfType<GameStatus>().Length;
+        int gameStatusCount = FindObjectsOfType<GameSession>().Length;
 
         // If this new GameStatus brings the count to greater than one, destroy it
         if (gameStatusCount > 1)
@@ -60,6 +60,11 @@ public class GameStatus : MonoBehaviour
     {
         currentScore += pointsPerBlockDestroyed;
         scoreText.text = currentScore.ToString();
+    }
+
+    public void DestroyGameStatus()
+    {
+        Destroy(gameObject);
     }
 
     private void UpdateDifficulty()

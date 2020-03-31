@@ -985,6 +985,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene Loader
       objectReference: {fileID: 0}
+    - target: {fileID: 6789176675864699164, guid: 8c60a6a86bc9249a5b17b2dd03d7d196,
+        type: 3}
+      propertyPath: difficultyPrompt
+      value: 
+      objectReference: {fileID: 2011398526}
     - target: {fileID: 6789176675864699165, guid: 8c60a6a86bc9249a5b17b2dd03d7d196,
         type: 3}
       propertyPath: m_LocalPosition.x

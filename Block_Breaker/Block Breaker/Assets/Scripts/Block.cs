@@ -6,6 +6,7 @@ public class Block : MonoBehaviour
 {
 
     [SerializeField] AudioClip breakSound;
+    [SerializeField] GameObject blockSparklesVFX;
 
     // cached references
     Level level;
@@ -31,16 +32,24 @@ public class Block : MonoBehaviour
     private void DestroyBlock()
     {
         // Increments the score when the block is destroyed
-        FindObjectOfType<GameStatus>().UpdateScore();
+        FindObjectOfType<GameSession>().UpdateScore();
 
         // Creates a new AudioSource with break sound at the position of the camera
         // This will play even if the block has been destroyed
         AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
+
+        // Creates a particle effect at the position of the block
+        TriggerSparklesVFX();
 
         // This destroys the Block and takes it out of the hierarchy
         Destroy(gameObject);
 
         // Decrements the breakableBlocks variable in Level.cs
         level.BlockDestroyed();
+    }
+
+    private void TriggerSparklesVFX()
+    {
+        GameObject sparkles = Instantiate(blockSparklesVFX, transform.position, transform.rotation);
     }
 }

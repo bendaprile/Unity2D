@@ -4281,6 +4281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc7f6927aa274809a19d29b5986e812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficultyPrompt: {fileID: 0}
 --- !u!4 &872734771 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5150274676164213796, guid: d01318713f08e46d9af759ee713a9fd2,
@@ -7953,7 +7954,7 @@ PrefabInstance:
     - target: {fileID: 6432155993643267544, guid: 63a75d6b428ea487b81b0fe358e4f025,
         type: 3}
       propertyPath: m_Name
-      value: Game Status
+      value: Game Session
       objectReference: {fileID: 0}
     - target: {fileID: 6432155993643267550, guid: 63a75d6b428ea487b81b0fe358e4f025,
         type: 3}

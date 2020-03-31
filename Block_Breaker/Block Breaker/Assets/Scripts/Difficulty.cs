@@ -43,4 +43,9 @@ public class Difficulty : MonoBehaviour
         Debug.Log("Difficulty set to: " + currentDifficulty);
         return currentDifficulty;
     }
+
+    public void DestroyDifficulty()
+    {
+        Destroy(gameObject);
+    }
 }

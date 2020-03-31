@@ -13,7 +13,8 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadNextScene()
     {
-        if (FindObjectOfType<Difficulty>().GetDifficulty() == null)
+        if (FindObjectOfType<Difficulty>().GetDifficulty() == null
+            && SceneManager.GetActiveScene().buildIndex == 0)
         {
             difficultyPrompt.text = "No difficulty selected. Please select a difficulty... ";
             difficultyPrompt.fontStyle = FontStyles.Bold;
@@ -30,6 +31,11 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadStartScene()
     {
+
+        // Destroy both of our DontDestroyOnLoad objects when the game is reset
+        FindObjectOfType<GameSession>().DestroyGameStatus();
+        FindObjectOfType<Difficulty>().DestroyDifficulty();
+
         // Loads the first scene in the build
         SceneManager.LoadScene(startingScene);
     }
