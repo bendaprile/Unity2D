@@ -12,7 +12,7 @@ public class Ball : MonoBehaviour
     [SerializeField] float yPushVel = 15f;
 
     // State Difference Vector (Between paddle and ball)
-    Vector2 paddleToBallVedctor;
+    Vector2 paddleToBallVector;
 
     private bool hasLaunched = false;
 
@@ -21,13 +21,13 @@ public class Ball : MonoBehaviour
     {
 
         // Sets the vector to the difference between the ball and the paddle positions
-        paddleToBallVedctor = transform.position - paddle.transform.position;
+        paddleToBallVector = transform.position - paddle.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hasLaunched == false)
+        if (!hasLaunched)
         {
             LockBallToPaddle();
             LaunchBallOnMouseClick();
@@ -40,7 +40,7 @@ public class Ball : MonoBehaviour
         Vector2 paddlePos = new Vector2(paddle.transform.position.x, paddle.transform.position.y);
 
         // Set the balls position to the paddle's + the difference vector
-        transform.position = paddlePos + paddleToBallVedctor;
+        transform.position = paddlePos + paddleToBallVector;
     }
 
     private void LaunchBallOnMouseClick()
@@ -49,6 +49,14 @@ public class Ball : MonoBehaviour
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(xPushVel, yPushVel);
             hasLaunched = true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (hasLaunched)
+        {
+            GetComponent<AudioSource>().Play();
         }
     }
 }
