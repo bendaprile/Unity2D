@@ -11,10 +11,17 @@ public class Ball : MonoBehaviour
     [SerializeField] float xPushVel = 2f;
     [SerializeField] float yPushVel = 15f;
 
+    // Array of AudioClips to use randomly during a collision
+    [SerializeField] AudioClip[] ballSounds;
+
     // State Difference Vector (Between paddle and ball)
     Vector2 paddleToBallVector;
 
+    // bool to keep track of whether the ball has been launched
     private bool hasLaunched = false;
+
+    //Cached component references (audio files)
+    AudioSource myAudioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +29,9 @@ public class Ball : MonoBehaviour
 
         // Sets the vector to the difference between the ball and the paddle positions
         paddleToBallVector = transform.position - paddle.transform.position;
+
+        // We grab the AudioSource object on startup so we don't have to grab it every time
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -56,7 +66,12 @@ public class Ball : MonoBehaviour
     {
         if (hasLaunched)
         {
-            GetComponent<AudioSource>().Play();
+            // Grabs a random AudioClip from the ballSounds Array
+            AudioClip clip = ballSounds[Random.Range(0, ballSounds.Length)];
+
+            // Grabs the AudioSource component and plays an audio
+            // PlayOneShot means it will not get cut off by other audio and will play all the way through
+            myAudioSource.PlayOneShot(clip);
         }
     }
 }
