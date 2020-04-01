@@ -34,3 +34,20 @@ user interface.
 
 * Also adds randomness into the game using Random.Range()
 
+
+## Block_Breaker
+
+### Block Breaker Project
+
+* A block breaking game with a start screen, multiple levels, and a win/loss mechanism.
+
+**This project implements many different mechanisms**
+
+* World Units & Play Space
+* Rigidbody & Colliders
+* Moving Gameobjects and Physics
+* Prefabs
+* Audio
+* Scoring
+* Tags
+

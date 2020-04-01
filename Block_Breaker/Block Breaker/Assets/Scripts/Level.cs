@@ -30,6 +30,4 @@ public class Level : MonoBehaviour
             sceneLoader.LoadNextScene();
         }
     }
-
-    
 }
