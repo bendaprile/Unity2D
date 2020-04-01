@@ -123,7 +123,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breakSound: {fileID: 8300000, guid: 44e2ab331458b4ef3b4304f9720ce69d, type: 3}
   blockSparklesVFX: {fileID: 100000, guid: 7d846c02296ef4dc4abff04ce3e5262c, type: 3}
+  maxHits: 2
+  hitSprites:
+  - {fileID: 21300000, guid: 000d05f6fc6024e799970b10c6e35059, type: 3}
   breakableTag: Breakable
   unbreakableTag: Unbreakable
-  maxHits: 2
   timesHit: 0

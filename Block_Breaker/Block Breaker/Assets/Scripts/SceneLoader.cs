@@ -44,4 +44,10 @@ public class SceneLoader : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void ContinueGame()
+    {
+        var sceneLostIndex = FindObjectOfType<GameSession>().GetLevelLost();
+        SceneManager.LoadScene(sceneLostIndex);
+    }
 }

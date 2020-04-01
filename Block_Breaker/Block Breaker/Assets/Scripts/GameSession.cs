@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameSession : MonoBehaviour
@@ -14,6 +15,7 @@ public class GameSession : MonoBehaviour
 
     // Serialized so we can see in inspector
     [SerializeField] int currentScore = 0;
+    int levelLostIndex;
 
 
     // Method executes before everything else
@@ -88,5 +90,30 @@ public class GameSession : MonoBehaviour
             Debug.Log("No difficulty found, defaulting to normal... ");
             gameSpeed = 0.75f;
         }
+    }
+
+    public void SetLevelLost()
+    {
+        levelLostIndex = SceneManager.GetActiveScene().buildIndex;
+    }
+
+    public int GetLevelLost()
+    {
+        if (levelLostIndex == 1)
+        {
+            currentScore = 0;
+        }
+        else
+        {
+            if ((currentScore - 200) > 0)
+            {
+                currentScore -= 200;
+            }
+            else
+            {
+                currentScore = 0;
+            }
+        }
+        return levelLostIndex;
     }
 }

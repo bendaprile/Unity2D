@@ -1,20 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Block : MonoBehaviour
 {
 
-    // effects
+    // config params
     [SerializeField] AudioClip breakSound;
     [SerializeField] GameObject blockSparklesVFX;
+    [SerializeField] int maxHits = 1;
+    [SerializeField] Sprite[] hitSprites;
 
     // tags
     [SerializeField] string breakableTag = "Breakable";
     [SerializeField] string unbreakableTag = "Unbreakable";
-
-    // vars
-    [SerializeField] int maxHits = 1;
 
     // cached references
     Level level;
@@ -48,23 +48,36 @@ public class Block : MonoBehaviour
     {
         if (tag == breakableTag)
         {
-            timesHit++;
-
-            if (timesHit >= maxHits)
-            {
-                HandleHit();
-            }
+            HandleHit();
         }
     }
 
     private void HandleHit()
     {
+        timesHit++;
+        if (timesHit >= maxHits)
+        {
+            DestroyBlock();
+        }
+        else
+        {
+            ShowNextHitSprite();
+        }
+    }
+
+    private void ShowNextHitSprite()
+    {
+        // If times hit is 1 then sprite index will be 0 and we'll pull the 0 index from the hitSprites array
+        int spriteIndex = timesHit - 1;
+        GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+    }
+
+    private void DestroyBlock()
+    {
         // Increments the score when the block is destroyed
         FindObjectOfType<GameSession>().UpdateScore();
 
-        // Creates a new AudioSource with break sound at the position of the camera
-        // This will play even if the block has been destroyed
-        AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
+        PlayBlockDestroyVFX();
 
         // Creates a particle effect at the position of the block
         TriggerSparklesVFX();
@@ -78,8 +91,16 @@ public class Block : MonoBehaviour
 
     private void TriggerSparklesVFX()
     {
+        // Instantiate a sparkles effect at the position of the block
         GameObject sparkles = Instantiate(blockSparklesVFX, transform.position, transform.rotation);
-
         Destroy(sparkles, 2f);
+    }
+
+    private void PlayBlockDestroyVFX()
+    {
+        // Creates a new AudioSource with break sound at the position of the camera
+        // This will play even if the block has been destroyed
+        AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
+
     }
 }
