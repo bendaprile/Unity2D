@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -16,6 +14,7 @@ public class GameSession : MonoBehaviour
     // Serialized so we can see in inspector
     [SerializeField] int currentScore = 0;
     int levelLostIndex;
+    float yPushVel;
 
 
     // Method executes before everything else
@@ -71,25 +70,31 @@ public class GameSession : MonoBehaviour
 
         if (currentDifficulty == "easy")
         {
-            gameSpeed = 0.5f;
+            yPushVel = 10f;
             pointsPerBlockDestroyed = 50;
         }
         else if (currentDifficulty == "normal")
         {
-            gameSpeed = 0.75f;
+            yPushVel = 12.5f;
             pointsPerBlockDestroyed = 75;
         }
         else if (currentDifficulty == "hard")
         {
-            gameSpeed = 1.0f;
+            yPushVel = 15f;
             pointsPerBlockDestroyed = 100;
         }
         else
         {
             Debug.Log("No difficulty found, defaulting to normal... ");
-            gameSpeed = 0.75f;
+            yPushVel = 12.5f;
             pointsPerBlockDestroyed = 75;
         }
+    }
+
+    // Called by the Ball Script to get the starting velocity in the y direction
+    public float GetYPushVelocity()
+    {
+        return yPushVel;
     }
 
     public void SetLevelLost()

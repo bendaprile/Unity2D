@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
@@ -10,6 +8,7 @@ public class Ball : MonoBehaviour
 
     [SerializeField] float xPushVel = 2f;
     [SerializeField] float yPushVel = 15f;
+    [SerializeField] float randomFactor = 0.2f;
 
     // Array of AudioClips to use randomly during a collision
     [SerializeField] AudioClip[] ballSounds;
@@ -21,17 +20,20 @@ public class Ball : MonoBehaviour
     private bool hasLaunched = false;
 
     //Cached component references (audio files)
-    AudioSource myAudioSource;
+    AudioSource audioSource;
+    Rigidbody2D rigidBody2D;
 
     // Start is called before the first frame update
     void Start()
     {
-
         // Sets the vector to the difference between the ball and the paddle positions
         paddleToBallVector = transform.position - paddle.transform.position;
 
+        yPushVel = FindObjectOfType<GameSession>().GetYPushVelocity();
+
         // We grab the AudioSource object on startup so we don't have to grab it every time
-        myAudioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
+        rigidBody2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -64,6 +66,9 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Vector2 velocityTweak = new Vector2(Random.Range(0f, randomFactor),
+            Random.Range(0f, randomFactor));
+
         if (hasLaunched)
         {
             // Grabs a random AudioClip from the ballSounds Array
@@ -71,7 +76,9 @@ public class Ball : MonoBehaviour
 
             // Grabs the AudioSource component and plays an audio
             // PlayOneShot means it will not get cut off by other audio and will play all the way through
-            myAudioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(clip);
+
+            rigidBody2D.velocity += velocityTweak;
         }
     }
 }
