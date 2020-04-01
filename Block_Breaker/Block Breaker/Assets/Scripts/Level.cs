@@ -15,7 +15,7 @@ public class Level : MonoBehaviour
     }
 
     // Increments the breakableBlocks variable each time the Block script calls this method
-    public void CountBreakableBlocks()
+    public void CountBlocks()
     {
         breakableBlocks++;
     }

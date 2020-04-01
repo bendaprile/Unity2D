@@ -5,31 +5,59 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
 
+    // effects
     [SerializeField] AudioClip breakSound;
     [SerializeField] GameObject blockSparklesVFX;
 
+    // tags
+    [SerializeField] string breakableTag = "Breakable";
+    [SerializeField] string unbreakableTag = "Unbreakable";
+
+    // vars
+    [SerializeField] int maxHits = 1;
+
     // cached references
     Level level;
-    //GameStatus gameStatus;
+
+    // state variables
+    [SerializeField] int timesHit; // TODO only serialized for debug purposes
+
 
     private void Start()
     {
+        CountBreakableBlocks();
+    }
+
+    private void CountBreakableBlocks()
+    {
         // Instantiates level reference to the Level object so we can call public methods
         level = FindObjectOfType<Level>();
-        //gameStatus = FindObjectOfType<GameStatus>();
 
-        // Increments the breakableBlocks variable in the Level.cs
-        level.CountBreakableBlocks();
+        if (tag == breakableTag)
+        {
+            // Increments the breakableBlocks variable in the Level.cs
+            level.CountBlocks();
+        }
     }
+
+
 
     // This method is called when anything collides with the block
     // The collision parameter will tell us what collided with the block
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        DestroyBlock();
+        if (tag == breakableTag)
+        {
+            timesHit++;
+
+            if (timesHit >= maxHits)
+            {
+                HandleHit();
+            }
+        }
     }
 
-    private void DestroyBlock()
+    private void HandleHit()
     {
         // Increments the score when the block is destroyed
         FindObjectOfType<GameSession>().UpdateScore();
@@ -51,5 +79,7 @@ public class Block : MonoBehaviour
     private void TriggerSparklesVFX()
     {
         GameObject sparkles = Instantiate(blockSparklesVFX, transform.position, transform.rotation);
+
+        Destroy(sparkles, 2f);
     }
 }
