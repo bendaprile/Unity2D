@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour
 
     [SerializeField] float xPushVel = 2f;
     [SerializeField] float yPushVel = 15f;
-    //[SerializeField] float randomFactor = 0.2f;
+    [SerializeField] float randomFactor = 0.2f;
 
     // Array of AudioClips to use randomly during a collision
     [SerializeField] AudioClip[] ballSounds;
@@ -66,7 +66,8 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       // Vector2 velocityTweak = new Vector2(Random.Range(0f, randomFactor),Random.Range(0f, randomFactor));
+       Vector2 velocityTweak = new Vector2(Random.Range(0f, randomFactor),
+           Random.Range(0f, randomFactor));
 
         if (hasLaunched)
         {
@@ -76,6 +77,8 @@ public class Ball : MonoBehaviour
             // Grabs the AudioSource component and plays an audio
             // PlayOneShot means it will not get cut off by other audio and will play all the way through
             audioSource.PlayOneShot(clip);
+
+            rigidBody2D.velocity += velocityTweak;
         }
     }
 }

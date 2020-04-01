@@ -142,4 +142,9 @@ public class GameSession : MonoBehaviour
     {
         return livesLeft;
     }
+
+    public int GetCurrentScore()
+    {
+        return currentScore;
+    }
 }
