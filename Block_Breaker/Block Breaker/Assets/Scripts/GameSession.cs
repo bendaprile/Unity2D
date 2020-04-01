@@ -10,7 +10,7 @@ public class GameSession : MonoBehaviour
     // 1f is realtime, 0.5 is 2x slower and so on
     // Range sets a minimum and maximum we can set in the inspector
     [Range(0.1f, 10f)] [SerializeField] float gameSpeed = 1f;
-    [SerializeField] int pointsPerBlockDestroyed = 83;
+    [SerializeField] int pointsPerBlockDestroyed;
     [SerializeField] TextMeshProUGUI scoreText;
 
     // Serialized so we can see in inspector
@@ -21,7 +21,7 @@ public class GameSession : MonoBehaviour
     // Method executes before everything else
     private void Awake()
     {
-
+        
         // Determines how many GameStatus objects we currently have in our scene
         int gameStatusCount = FindObjectsOfType<GameSession>().Length;
 
@@ -41,12 +41,8 @@ public class GameSession : MonoBehaviour
 
     private void Start()
     {
-
-        UpdateDifficulty();
-
-        // Using GetComponent<TextMeshProUGUI here breaks the link between score text
-        // when using DontDestroyOnLoad
         scoreText.text = currentScore.ToString();
+        UpdateDifficulty();
     }
 
 
@@ -76,28 +72,27 @@ public class GameSession : MonoBehaviour
         if (currentDifficulty == "easy")
         {
             gameSpeed = 0.5f;
+            pointsPerBlockDestroyed = 50;
         }
         else if (currentDifficulty == "normal")
         {
             gameSpeed = 0.75f;
+            pointsPerBlockDestroyed = 75;
         }
         else if (currentDifficulty == "hard")
         {
             gameSpeed = 1.0f;
+            pointsPerBlockDestroyed = 100;
         }
         else
         {
             Debug.Log("No difficulty found, defaulting to normal... ");
             gameSpeed = 0.75f;
+            pointsPerBlockDestroyed = 75;
         }
     }
 
     public void SetLevelLost()
-    {
-        levelLostIndex = SceneManager.GetActiveScene().buildIndex;
-    }
-
-    public int GetLevelLost()
     {
         if (levelLostIndex == 1)
         {
@@ -114,6 +109,12 @@ public class GameSession : MonoBehaviour
                 currentScore = 0;
             }
         }
+        levelLostIndex = SceneManager.GetActiveScene().buildIndex;
+    }
+
+    public int GetLevelLost()
+    {
+        scoreText.text = currentScore.ToString();
         return levelLostIndex;
     }
 }
