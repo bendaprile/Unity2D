@@ -25,7 +25,10 @@ public class SceneLoader : MonoBehaviour
             // Loads the scene that has the index one higher than our current one
             SceneManager.LoadScene(currentSceneIndex + 1);
 
-            UpdateLivesLeft();
+            if (currentSceneIndex > 1)
+            {
+                UpdateLivesLeft();
+            }
         }
     }
 

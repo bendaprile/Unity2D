@@ -10,7 +10,7 @@ public class Block : MonoBehaviour
 
     // tags
     [SerializeField] string breakableTag = "Breakable";
-    [SerializeField] string unbreakableTag = "Unbreakable";
+    //[SerializeField] string unbreakableTag = "Unbreakable";
 
     // cached references
     Level level;

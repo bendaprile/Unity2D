@@ -22,8 +22,6 @@ public class GameSession : MonoBehaviour
     // Method executes before everything else
     private void Awake()
     {
-        Debug.Log("Awake method called");
-
         // Determines how many GameStatus objects we currently have in our scene
         int gameSessionCount = FindObjectsOfType<GameSession>().Length;
 
@@ -36,7 +34,6 @@ public class GameSession : MonoBehaviour
         }
         else
         {
-            Debug.Log("Awake method else called");
             DontDestroyOnLoad(gameObject);
         }
     }
@@ -70,19 +67,19 @@ public class GameSession : MonoBehaviour
 
         if (currentDifficulty == "easy")
         {
-            yPushVel = 10f;
+            yPushVel = 9f;
             pointsPerBlockDestroyed = 50;
             livesLeft = 2;
         }
         else if (currentDifficulty == "normal")
         {
-            yPushVel = 12.5f;
+            yPushVel = 11f;
             pointsPerBlockDestroyed = 75;
             livesLeft = 1;
         }
         else if (currentDifficulty == "hard")
         {
-            yPushVel = 15f;
+            yPushVel = 13f;
             pointsPerBlockDestroyed = 100;
             livesLeft = 0;
         }

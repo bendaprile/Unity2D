@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour
 
     [SerializeField] float xPushVel = 2f;
     [SerializeField] float yPushVel = 15f;
-    [SerializeField] float randomFactor = 0.2f;
+    //[SerializeField] float randomFactor = 0.2f; This is a terrible way to fix this problem
 
     // Array of AudioClips to use randomly during a collision
     [SerializeField] AudioClip[] ballSounds;
@@ -21,7 +21,7 @@ public class Ball : MonoBehaviour
 
     //Cached component references (audio files)
     AudioSource audioSource;
-    Rigidbody2D rigidBody2D;
+    //Rigidbody2D rigidBody2D;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,7 @@ public class Ball : MonoBehaviour
 
         // We grab the AudioSource object on startup so we don't have to grab it every time
         audioSource = GetComponent<AudioSource>();
-        rigidBody2D = GetComponent<Rigidbody2D>();
+        //rigidBody2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -66,8 +66,8 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       Vector2 velocityTweak = new Vector2(Random.Range(-randomFactor, randomFactor),
-           Random.Range(-randomFactor, randomFactor));
+       //Vector2 velocityTweak = new Vector2(Random.Range(-randomFactor, randomFactor),
+           //Random.Range(-randomFactor, randomFactor));
 
         if (hasLaunched)
         {
@@ -77,8 +77,6 @@ public class Ball : MonoBehaviour
             // Grabs the AudioSource component and plays an audio
             // PlayOneShot means it will not get cut off by other audio and will play all the way through
             audioSource.PlayOneShot(clip);
-
-            rigidBody2D.velocity += velocityTweak;
         }
     }
 }
