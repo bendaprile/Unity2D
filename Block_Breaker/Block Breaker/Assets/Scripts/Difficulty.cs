@@ -38,7 +38,6 @@ public class Difficulty : MonoBehaviour
 
     public string GetDifficulty()
     {
-        Debug.Log("Difficulty set to: " + currentDifficulty);
         return currentDifficulty;
     }
 

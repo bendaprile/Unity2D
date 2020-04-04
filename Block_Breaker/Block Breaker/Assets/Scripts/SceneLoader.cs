@@ -24,14 +24,24 @@ public class SceneLoader : MonoBehaviour
 
             // Loads the scene that has the index one higher than our current one
             SceneManager.LoadScene(currentSceneIndex + 1);
+
+            UpdateLivesLeft();
         }
+    }
+
+    // Update lives left depending on difficulty when the next level is loaded
+    private void UpdateLivesLeft()
+    {
+        var currentDifficulty = FindObjectOfType<Difficulty>().GetDifficulty();
+
+        FindObjectOfType<GameSession>().UpdateLivesLeft(currentDifficulty);
     }
 
     public void LoadStartScene()
     {
 
         // Destroy both of our DontDestroyOnLoad objects when the game is reset
-        FindObjectOfType<GameSession>().DestroyGameStatus();
+        FindObjectOfType<GameSession>().DestroyGameSession();
         FindObjectOfType<Difficulty>().DestroyDifficulty();
 
         // Loads the first scene in the build

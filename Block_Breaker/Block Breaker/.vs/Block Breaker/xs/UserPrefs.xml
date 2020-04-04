@@ -1,10 +1,9 @@
 ﻿<Properties StartupConfiguration="{8EF7FD2A-EA24-02BA-E337-8605DF5645B6}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameSession.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameSession.cs" Line="128" Column="1" />
-      <File FileName="Assets/FinalScoring.cs" Line="19" Column="53" />
-      <File FileName="Assets/Scripts/Paddle.cs" Line="23" Column="24" />
-      <File FileName="Assets/Scripts/Ball.cs" Line="79" Column="16" />
+      <File FileName="Assets/Scripts/GameSession.cs" Line="145" Column="1" />
+      <File FileName="Assets/Scripts/Difficulty.cs" Line="43" Column="1" />
+      <File FileName="Assets/Scripts/SceneLoader.cs" Line="49" Column="31" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,7 +21,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4167c9e9-ce18-4acd-abf0-049733987dc6" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="2c55fa6e-3f10-477c-bc77-afaf6dc7cb88" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

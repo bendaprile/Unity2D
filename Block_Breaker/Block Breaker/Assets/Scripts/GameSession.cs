@@ -17,17 +17,18 @@ public class GameSession : MonoBehaviour
     [SerializeField] int currentScore = 0;
     int buildIndexOfLevelLost;
     float yPushVel;
-    int livesLeft;
+    [SerializeField] int livesLeft;
 
     // Method executes before everything else
     private void Awake()
     {
-        
+        Debug.Log("Awake method called");
+
         // Determines how many GameStatus objects we currently have in our scene
-        int gameStatusCount = FindObjectsOfType<GameSession>().Length;
+        int gameSessionCount = FindObjectsOfType<GameSession>().Length;
 
         // If this new GameStatus brings the count to greater than one, destroy it
-        if (gameStatusCount > 1)
+        if (gameSessionCount > 1)
         {
             // This is required because Destroy runs after everything else and that can sometimes cause a bug
             gameObject.SetActive(false);
@@ -35,6 +36,7 @@ public class GameSession : MonoBehaviour
         }
         else
         {
+            Debug.Log("Awake method else called");
             DontDestroyOnLoad(gameObject);
         }
     }
@@ -60,11 +62,6 @@ public class GameSession : MonoBehaviour
     {
         currentScore += pointsPerBlockDestroyed;
         scoreText.text = currentScore.ToString();
-    }
-
-    public void DestroyGameStatus()
-    {
-        Destroy(gameObject);
     }
 
     private void UpdateDifficulty()
@@ -96,6 +93,29 @@ public class GameSession : MonoBehaviour
             pointsPerBlockDestroyed = 75;
             livesLeft = 1;
         }
+    }
+
+    public void UpdateLivesLeft(string currentDifficulty)
+    {
+        if (currentDifficulty == "easy")
+        {
+            livesLeft = 2;
+        }
+        else if (currentDifficulty == "normal")
+        {
+            livesLeft = 1;
+        }
+        else if (currentDifficulty == "hard")
+        {
+            livesLeft = 0;
+        }
+        else
+        {
+            Debug.Log("No difficulty found, defaulting to normal... ");
+            livesLeft = 1;
+        }
+
+        livesLeftText.text = livesLeft.ToString();
     }
 
     // Called by the Ball Script to get the starting velocity in the y direction
@@ -146,5 +166,10 @@ public class GameSession : MonoBehaviour
     public int GetCurrentScore()
     {
         return currentScore;
+    }
+
+    public void DestroyGameSession()
+    {
+        Destroy(gameObject);
     }
 }

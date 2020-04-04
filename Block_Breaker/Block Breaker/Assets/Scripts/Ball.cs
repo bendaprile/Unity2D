@@ -66,8 +66,8 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       Vector2 velocityTweak = new Vector2(Random.Range(0f, randomFactor),
-           Random.Range(0f, randomFactor));
+       Vector2 velocityTweak = new Vector2(Random.Range(-randomFactor, randomFactor),
+           Random.Range(-randomFactor, randomFactor));
 
         if (hasLaunched)
         {
