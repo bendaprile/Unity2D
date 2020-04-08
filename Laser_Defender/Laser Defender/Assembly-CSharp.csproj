@@ -64,8 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player.cs" />
-    <None Include="Assets\Space Shooter Visual Assets\license.txt" />
-    <None Include="Assets\Space Shooter Visual Assets\Spritesheet\sheet.xml" />
+    <None Include="Assets\Z Kenney Assets\license.txt" />
+    <None Include="Assets\Z Kenney Assets\Spritesheet\sheet.xml" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/BigBoss/Desktop/Unity Class/Repos/Unity2D/Laser_Defender/Laser Defender/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
