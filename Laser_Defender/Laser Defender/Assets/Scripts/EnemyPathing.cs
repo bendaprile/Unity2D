@@ -6,12 +6,15 @@ using UnityEngine;
 public class EnemyPathing : MonoBehaviour
 {
 
-    [SerializeField] List<Transform> waypoints;
+    [SerializeField] WaveConfig waveConfig;
+    List<Transform> waypoints;
     [SerializeField] float movementSpeed = 2f;
     int nextWaypointIndex = 0;
 
     private void Start()
     {
+        waypoints = waveConfig.GetWaypoints();
+
         // Set the ships starting position to the first waypoint in our waypoints list
         transform.position = waypoints[nextWaypointIndex].position;
     }
