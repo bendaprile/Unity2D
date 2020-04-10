@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float projectileSpeed = 20f;
     [SerializeField] GameObject laserPrefab;
+    [SerializeField] float projectileFiringPeriod = 0.1f;
+
+    Coroutine firingCoroutine;
 
     float xMin;
     float xMax;
@@ -20,9 +23,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         SetUpMoveBoundaries();
-        StartCoroutine(PrintAndWait());
     }
 
+    // Called to set up the boundaries of the play space in order to limit the player
     private void SetUpMoveBoundaries()
     {
         Camera gameCamera = Camera.main;
@@ -43,12 +46,6 @@ public class Player : MonoBehaviour
         yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 0.5f, 0)).y - spriteYPadding;
     }
 
-    IEnumerator PrintAndWait()
-    {
-        Debug.Log("Damn gotta wait boys");
-        yield return new WaitForSeconds(3);
-        Debug.Log("Well that wasn't too bad");
-    }
 
     // Update is called once per frame
     void Update()
@@ -63,11 +60,32 @@ public class Player : MonoBehaviour
         // If the button that is mapped to Fire1 (from input manager) is pressed...
         if (Input.GetButtonDown("Fire1"))
         {
+            // Start the FireContinuously coroutine and set it to firingCoroutine variable
+            firingCoroutine = StartCoroutine(FireContinuously());
+        }
+
+        // When the Fire1 button is released we will stop the coroutine
+        if (Input.GetButtonUp("Fire1"))
+        {
+            // Stop the firingCoroutine that we set above
+            StopCoroutine(firingCoroutine);
+        }
+    }
+
+    IEnumerator FireContinuously()
+    {
+
+        // Creates a loop so that when button is pressed down this will continuously shoot
+        while (true)
+        {
             // Create a GameObject called laser with the laserPrefab, at the Player's position, with no rotation
             GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity) as GameObject;
 
             // Give the RigidBody2D of the laser some velocity in the y direction
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+
+            // Waits for projectileFiringPeriod seconds before doing the while loop again
+            yield return new WaitForSeconds(projectileFiringPeriod);
         }
     }
 
