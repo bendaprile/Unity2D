@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\EnemyPathing.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Shredder.cs" />
+    <Compile Include="Assets\Scripts\WaveConfig.cs" />
     <None Include="Assets\Z Kenney Assets\license.txt" />
     <None Include="Assets\Z Kenney Assets\Spritesheet\sheet.xml" />
     <Reference Include="Unity.Timeline.Editor">
