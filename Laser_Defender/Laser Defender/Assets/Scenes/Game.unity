@@ -194,12 +194,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 80823527580835856, guid: 5a78973131a864ee5ae659227685a38f,
-        type: 3}
-      propertyPath: laserPrefab
-      value: 
-      objectReference: {fileID: 8174447093189577162, guid: 89a6780ec4b6a4e9b840ab17f191995a,
-        type: 3}
     - target: {fileID: 80823527580835861, guid: 5a78973131a864ee5ae659227685a38f,
         type: 3}
       propertyPath: m_Name
@@ -272,7 +266,7 @@ PrefabInstance:
     - target: {fileID: 4471701759537291464, guid: 0e3a660e46e91422b9613b7cd671608a,
         type: 3}
       propertyPath: m_Name
-      value: Laser Collider
+      value: Shredder
       objectReference: {fileID: 0}
     - target: {fileID: 5791557273492416557, guid: 0e3a660e46e91422b9613b7cd671608a,
         type: 3}
