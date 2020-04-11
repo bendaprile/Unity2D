@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6696850705115338429}
   - component: {fileID: 6696850705115338428}
   - component: {fileID: 6241913541394596302}
+  - component: {fileID: 8065687278650065598}
+  - component: {fileID: 933194255832817831}
   m_Layer: 0
   m_Name: Terry Bradshaw
   m_TagString: Untagged
@@ -94,3 +96,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c74d6a16b754160b85c0d71c187c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8065687278650065598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6696850705115338419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d26533874774a0c9808ad01e3cde41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3000
+--- !u!60 &933194255832817831
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6696850705115338419}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.6571429, y: 2.4}
+    newSize: {x: 1.04, y: 0.84}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.44285715, y: -0.34285715}
+      - {x: 0.44285715, y: -0.4}
+      - {x: 0.41428572, y: -0.42857143}
+      - {x: 0.3857143, y: -0.6}
+      - {x: 0.3, y: -0.6857143}
+      - {x: 0.24285714, y: -1.0857143}
+      - {x: 0.41428572, y: -1.1714286}
+      - {x: 0.5, y: -1.2}
+      - {x: 0.78571427, y: -1.2}
+      - {x: 0.9571429, y: -0.82857144}
+      - {x: 1.3285714, y: 0.25714287}
+      - {x: 1.3285714, y: 0.6}
+      - {x: 0.9571429, y: 1.1428572}
+      - {x: 0.92857146, y: 1.2}
+      - {x: 0.64285713, y: 1.2}
+      - {x: 0.27142859, y: 1.0857143}
+      - {x: 0.21428572, y: 0.9714286}
+      - {x: -0.6142857, y: 1.2}
+      - {x: -0.9571429, y: 1.2}
+      - {x: -1.3285714, y: 0.62857145}
+      - {x: -1.3285714, y: 0.08571429}
+      - {x: -0.8142857, y: -1.2}
+      - {x: -0.47142857, y: -1.2}
+      - {x: -0.3857143, y: -1.1714286}
+      - {x: -0.21428572, y: -1.0857143}
+      - {x: 0.35714287, y: -0.54285717}
+      - {x: 0.41428572, y: -0.45714286}
