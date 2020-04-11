@@ -6,9 +6,8 @@ using UnityEngine;
 public class EnemyPathing : MonoBehaviour
 {
 
-    [SerializeField] WaveConfig waveConfig;
+    WaveConfig waveConfig;
     List<Transform> waypoints;
-    [SerializeField] float movementSpeed = 2f;
     int nextWaypointIndex = 0;
 
     private void Start()
@@ -24,6 +23,11 @@ public class EnemyPathing : MonoBehaviour
         Move();
     }
 
+    public void SetWaveConfig(WaveConfig waveConfig)
+    {
+        this.waveConfig = waveConfig;
+    }
+
     // Calculates the ships next spot and moves the ship to that spot
     private void Move()
     {
@@ -33,9 +37,10 @@ public class EnemyPathing : MonoBehaviour
         {
 
             var targetPosition = waypoints[nextWaypointIndex].position;
+            var moveSpeed = waveConfig.GetMoveSpeed();
 
             // Multiply movementSpeed by Time.deltaTime in order to make enemy movement frame rate independent
-            var movementThisFrame = movementSpeed * Time.deltaTime;
+            var movementThisFrame = moveSpeed * Time.deltaTime;
 
             // Use Vector2.MoveTowards method to get our new position to move to
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);

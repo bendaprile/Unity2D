@@ -5,14 +5,30 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] List<WaveConfig> waveConfigs;
+    [SerializeField] int startingWave = 0;
+    [SerializeField] bool looping = false;
 
-    int startingWave = 0;
-
-    // Start is called before the first frame update
-    void Start()
+    // Start was changed to a coroutine to facilitate looping enemy waves
+    IEnumerator Start()
     {
-        var currentWave = waveConfigs[startingWave];
-        StartCoroutine(SpawnAllEnemiesInWave(currentWave));
+
+        // This do while loop will continue spawning waves of enemies until looping = false
+        do
+        {
+            yield return StartCoroutine(SpawnAllWaves());         
+        }
+        while (looping);
+    }
+
+    // Spawns all the waves in order
+    private IEnumerator SpawnAllWaves()
+    {
+        // Run through for every wave in the waveConfigs and spawn all enemies in that wave
+        for (int waveIndex=startingWave; waveIndex<waveConfigs.Count; waveIndex++)
+        {
+            var currentWave = waveConfigs[waveIndex];
+            yield return StartCoroutine(SpawnAllEnemiesInWave(currentWave));
+        }
     }
 
     private IEnumerator SpawnAllEnemiesInWave(WaveConfig waveConfig)
@@ -24,10 +40,12 @@ public class EnemySpawner : MonoBehaviour
         {
             // Instantiate our waveConfig using getters for...
             // EnemyPrefab, Waypoints.position, and no rotation
-            Instantiate(
+            var newEnemy = Instantiate(
                 waveConfig.GetEnemyPrefab(),
                 waveConfig.GetWaypoints()[0].position,
                 Quaternion.identity);
+
+            newEnemy.GetComponent<EnemyPathing>().SetWaveConfig(waveConfig);
 
             // Wait a certain amount of time before spawning another enemy
             yield return new WaitForSeconds(waveConfig.GetTimeBetweenSpawns());
@@ -37,6 +55,9 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            looping = false;
+        }
     }
 }
