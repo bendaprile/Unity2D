@@ -7,7 +7,11 @@ public class Player : MonoBehaviour
 {
 
     // configuration parameters
+    [Header("Player")]
     [SerializeField] float moveSpeed = 10f;
+    [SerializeField] int health = 200;
+
+    [Header("Projectile")]
     [SerializeField] float projectileSpeed = 20f;
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float projectileFiringPeriod = 0.1f;
@@ -103,5 +107,28 @@ public class Player : MonoBehaviour
 
         // Update x position to our newly found x position
         transform.position = new Vector2(newXPos, newYPos);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Grab the DamageDealer script from the other gameobject
+        DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
+
+        // Subtracts health and checks if the player should die
+        ProcessHit(damageDealer);
+    }
+
+    private void ProcessHit(DamageDealer damageDealer)
+    {
+        // Subtract the damage from the heatlh
+        health -= damageDealer.GetDamage();
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+        // Destroys the laser so it cannot hurt the player again
+        damageDealer.Hit();
     }
 }
