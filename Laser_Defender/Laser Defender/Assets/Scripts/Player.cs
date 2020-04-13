@@ -114,8 +114,11 @@ public class Player : MonoBehaviour
         // Grab the DamageDealer script from the other gameobject
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
 
-        // Subtracts health and checks if the player should die
-        ProcessHit(damageDealer);
+        if (!damageDealer)
+        {
+            // Subtracts health and checks if the player should die
+            ProcessHit(damageDealer);
+        }
     }
 
     private void ProcessHit(DamageDealer damageDealer)
@@ -123,12 +126,12 @@ public class Player : MonoBehaviour
         // Subtract the damage from the heatlh
         health -= damageDealer.GetDamage();
 
+        // Destroys the laser so it cannot hurt the player again
+        damageDealer.Hit();
+
         if (health <= 0)
         {
             Destroy(gameObject);
         }
-
-        // Destroys the laser so it cannot hurt the player again
-        damageDealer.Hit();
     }
 }

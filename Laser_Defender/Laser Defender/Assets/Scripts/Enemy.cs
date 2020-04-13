@@ -39,11 +39,37 @@ public class Enemy : MonoBehaviour
 
     private void Fire()
     {
-        // Create a GameObject called laser with the laserPrefab, at the Enemy's position, with no rotation
-        GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity) as GameObject;
 
-        // Give the RigidBody2D of the laser some velocity in the y direction
-        laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+        if (tag == "Basic")
+        {
+            // Create a GameObject called laser with the laserPrefab, at the Enemy's position, with no rotation
+            GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity) as GameObject;
+
+            // Give the RigidBody2D of the laser some velocity in the y direction
+            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+        }
+        else if (tag == "Terry")
+        {
+
+            Vector3 leftPosition = new Vector3(transform.position.x - 0.8f, transform.position.y);
+            Vector3 rightPosition = new Vector3(transform.position.x + 0.8f, transform.position.y);
+
+            // Create two lasers on either side of the enemy
+            GameObject leftLaser = Instantiate(laserPrefab, leftPosition, Quaternion.identity) as GameObject;
+            GameObject rightLaser = Instantiate(laserPrefab, rightPosition, Quaternion.identity) as GameObject;
+
+            // Give the RigidBody2D of the lasers some velocity in the y direction
+            leftLaser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+            rightLaser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+        }
+        else
+        {
+            // Create a GameObject called laser with the laserPrefab, at the Enemy's position, with no rotation
+            GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity) as GameObject;
+
+            // Give the RigidBody2D of the laser some velocity in the y direction
+            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -51,8 +77,11 @@ public class Enemy : MonoBehaviour
         // Grab the DamageDealer script from the other gameobject
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
 
-        // Subtracts health and checks if the enemy should be destroyed
-        ProcessHit(damageDealer);
+        if (!damageDealer)
+        {
+            // Subtracts health and checks if the enemy should be destroyed
+            ProcessHit(damageDealer);
+        }
     }
 
     private void ProcessHit(DamageDealer damageDealer)
@@ -60,14 +89,12 @@ public class Enemy : MonoBehaviour
         // Subtract the damage from the heatlh
         health -= damageDealer.GetDamage();
 
+        // Destroys the laser so it cannot hurt anything else
+        damageDealer.Hit();
+
         if (health <= 0)
         {
             Destroy(gameObject);
         }
-
-        // Destroys the laser so it cannot hurt anything else
-        // Causes a bug where the laser gets destroyed right when its spawned
-        // because it is spawned on the enemy...
-        //damageDealer.Hit();
     }
 }
