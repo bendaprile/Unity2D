@@ -113,12 +113,14 @@ public class Player : MonoBehaviour
     {
         // Grab the DamageDealer script from the other gameobject
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
-
+        Debug.Log("Player Hit");
         if (!damageDealer)
         {
-            // Subtracts health and checks if the player should die
-            ProcessHit(damageDealer);
+            throw new Exception("Null Damagedealer");
         }
+
+        // Subtracts health and checks if the player should die
+        ProcessHit(damageDealer);
     }
 
     private void ProcessHit(DamageDealer damageDealer)

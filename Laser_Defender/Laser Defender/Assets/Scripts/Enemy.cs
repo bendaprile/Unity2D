@@ -79,9 +79,11 @@ public class Enemy : MonoBehaviour
 
         if (!damageDealer)
         {
-            // Subtracts health and checks if the enemy should be destroyed
-            ProcessHit(damageDealer);
+            throw new System.Exception("Null DamageDealer");
         }
+
+        // Subtracts health and checks if the enemy should be destroyed
+        ProcessHit(damageDealer);
     }
 
     private void ProcessHit(DamageDealer damageDealer)
