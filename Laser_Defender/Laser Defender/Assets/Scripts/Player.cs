@@ -156,5 +156,7 @@ public class Player : MonoBehaviour
         // Instantiate a new explosion on the position of the ship and destroy it after a second
         GameObject explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity) as GameObject;
         Destroy(explosion, 0.5f);
+
+        FindObjectOfType<Level>().LoadGameOver();
     }
 }
