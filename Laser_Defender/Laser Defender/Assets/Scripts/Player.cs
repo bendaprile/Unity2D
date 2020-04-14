@@ -51,11 +51,11 @@ public class Player : MonoBehaviour
 
         // Create the minimum and maximum x values that we can travel to
         xMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + spriteXPadding;
-        xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - spriteXPadding;
+        xMax = gameCamera.ViewportToWorldPoint(new Vector3(1f, 0, 0)).x - spriteXPadding;
 
         // Create the minimum and maximum y values that we can travel to
         yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + spriteYPadding;
-        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 0.5f, 0)).y - spriteYPadding;
+        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y - spriteYPadding;
     }
 
 

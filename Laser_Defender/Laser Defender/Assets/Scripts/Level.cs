@@ -17,11 +17,18 @@ public class Level : MonoBehaviour
 
     public void LoadGameOver()
     {
-        SceneManager.LoadScene("GameOver");
+        StartCoroutine(LoadSceneShortDelay("GameOver"));
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    IEnumerator LoadSceneShortDelay(string scene)
+    {
+        yield return new WaitForSeconds(1f);
+
+        SceneManager.LoadScene(scene);
     }
 }
