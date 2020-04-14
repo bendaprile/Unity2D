@@ -97,10 +97,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   health: 200
+  explosionDuration: 0.7
   projectileSpeed: 20
+  projectileFiringPeriod: 0.05
   laserPrefab: {fileID: 8174447093189577162, guid: 89a6780ec4b6a4e9b840ab17f191995a,
     type: 3}
-  projectileFiringPeriod: 0.05
+  explosionVFX: {fileID: 7645543696100409753, guid: 057ae5fd8dcf44d23b19f8c245f372c0,
+    type: 3}
+  shootingSFX: {fileID: 8300000, guid: 8d67d79a78e62478d80e6ba9091d0a71, type: 3}
+  shootingVolume: 0.2
+  deathSFX: {fileID: 8300000, guid: f31eaf873e9514ce286e33986acaa9d6, type: 3}
+  deathVolume: 0.7
 --- !u!60 &193517829409402495
 PolygonCollider2D:
   m_ObjectHideFlags: 0

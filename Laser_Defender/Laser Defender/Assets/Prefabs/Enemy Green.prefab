@@ -110,11 +110,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   projectileSpeed: 10
-  laserPrefab: {fileID: 879408607489489098, guid: 7fcf40be6cd264ff185315975d697ddb,
-    type: 3}
+  explosionDuration: 0.7
   shotCounter: 0
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 3
+  laserPrefab: {fileID: 879408607489489098, guid: 7fcf40be6cd264ff185315975d697ddb,
+    type: 3}
+  explosionVFX: {fileID: 7645543696100409753, guid: 057ae5fd8dcf44d23b19f8c245f372c0,
+    type: 3}
+  deathSFX: {fileID: 8300000, guid: 2972b25943212427d971d2548c71d33d, type: 3}
+  deathVolume: 0.8
+  shootingSFX: {fileID: 8300000, guid: 00bbdbf1705da45139f4b6d50e3b1cb1, type: 3}
+  shootingVolume: 0.5
 --- !u!60 &5744994669226755157
 PolygonCollider2D:
   m_ObjectHideFlags: 0

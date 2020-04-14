@@ -10,11 +10,19 @@ public class Player : MonoBehaviour
     [Header("Player")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] int health = 200;
+    [SerializeField] float explosionDuration = 0.7f;
 
     [Header("Projectile")]
     [SerializeField] float projectileSpeed = 20f;
-    [SerializeField] GameObject laserPrefab;
     [SerializeField] float projectileFiringPeriod = 0.1f;
+
+    [Header("Prefabs and Effects")]
+    [SerializeField] GameObject laserPrefab;
+    [SerializeField] GameObject explosionVFX;
+    [SerializeField] AudioClip shootingSFX;
+    [SerializeField] [Range(0.0f, 1.0f)] float shootingVolume = 0.5f;
+    [SerializeField] AudioClip deathSFX;
+    [SerializeField] [Range(0.0f, 1.0f)] float deathVolume = 0.5f;
 
     Coroutine firingCoroutine;
 
@@ -88,6 +96,8 @@ public class Player : MonoBehaviour
             // Give the RigidBody2D of the laser some velocity in the y direction
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
 
+            AudioSource.PlayClipAtPoint(shootingSFX, Camera.main.transform.position, shootingVolume);
+
             // Waits for projectileFiringPeriod seconds before doing the while loop again
             yield return new WaitForSeconds(projectileFiringPeriod);
         }
@@ -113,7 +123,7 @@ public class Player : MonoBehaviour
     {
         // Grab the DamageDealer script from the other gameobject
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
-        Debug.Log("Player Hit");
+
         if (!damageDealer)
         {
             throw new Exception("Null Damagedealer");
@@ -133,7 +143,18 @@ public class Player : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume);
+
+        // Instantiate a new explosion on the position of the ship and destroy it after a second
+        GameObject explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity) as GameObject;
+        Destroy(explosion, 0.5f);
     }
 }

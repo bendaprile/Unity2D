@@ -6,12 +6,20 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float health = 100;
     [SerializeField] float projectileSpeed = 10f;
-    [SerializeField] GameObject laserPrefab;
+    [SerializeField] float explosionDuration = 0.7f;
 
     // Used for enemy shooting mechanism
     [SerializeField] float shotCounter;
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3;
+
+    [Header("Effects & Prefabs")]
+    [SerializeField] GameObject laserPrefab;
+    [SerializeField] GameObject explosionVFX;
+    [SerializeField] AudioClip deathSFX;
+    [SerializeField] [Range(0.0f, 1.0f)] float deathVolume = 0.8f;
+    [SerializeField] AudioClip shootingSFX;
+    [SerializeField] [Range(0.0f, 1.0f)] float shootingVolume = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -42,34 +50,45 @@ public class Enemy : MonoBehaviour
 
         if (tag == "Basic")
         {
-            // Create a GameObject called laser with the laserPrefab, at the Enemy's position, with no rotation
-            GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity) as GameObject;
-
-            // Give the RigidBody2D of the laser some velocity in the y direction
-            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+            ShootBasic();
         }
         else if (tag == "Terry")
         {
-
-            Vector3 leftPosition = new Vector3(transform.position.x - 0.8f, transform.position.y);
-            Vector3 rightPosition = new Vector3(transform.position.x + 0.8f, transform.position.y);
-
-            // Create two lasers on either side of the enemy
-            GameObject leftLaser = Instantiate(laserPrefab, leftPosition, Quaternion.identity) as GameObject;
-            GameObject rightLaser = Instantiate(laserPrefab, rightPosition, Quaternion.identity) as GameObject;
-
-            // Give the RigidBody2D of the lasers some velocity in the y direction
-            leftLaser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
-            rightLaser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+            ShootBoss();
         }
         else
         {
-            // Create a GameObject called laser with the laserPrefab, at the Enemy's position, with no rotation
-            GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity) as GameObject;
-
-            // Give the RigidBody2D of the laser some velocity in the y direction
-            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+            ShootBasic();
         }
+    }
+
+    private void ShootBasic()
+    {
+        // Create a GameObject called laser with the laserPrefab, at the Enemy's position, with no rotation
+        GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity) as GameObject;
+
+        // Give the RigidBody2D of the laser some velocity in the y direction
+        laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+
+        // Play the basic shooting sound effect
+        AudioSource.PlayClipAtPoint(shootingSFX, Camera.main.transform.position, shootingVolume);
+    }
+
+    private void ShootBoss()
+    {
+        Vector3 leftPosition = new Vector3(transform.position.x - 0.8f, transform.position.y);
+        Vector3 rightPosition = new Vector3(transform.position.x + 0.8f, transform.position.y);
+
+        // Create two lasers on either side of the enemy
+        GameObject leftLaser = Instantiate(laserPrefab, leftPosition, Quaternion.identity) as GameObject;
+        GameObject rightLaser = Instantiate(laserPrefab, rightPosition, Quaternion.identity) as GameObject;
+
+        // Give the RigidBody2D of the lasers some velocity in the y direction
+        leftLaser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+        rightLaser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+
+        // Play the big guns shooting sound
+        AudioSource.PlayClipAtPoint(shootingSFX, Camera.main.transform.position, shootingVolume);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -96,7 +115,19 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+
+        // Play the death sound effect
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume);
+
+        // Instantiate a new explosion on the position of the ship and destroy it after a second
+        GameObject explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity) as GameObject;
+        Destroy(explosion, explosionDuration);
     }
 }
