@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float health = 100;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float explosionDuration = 0.7f;
+    [SerializeField] int scoreWhenKilled = 150;
 
     // Used for enemy shooting mechanism
     [SerializeField] float shotCounter;
@@ -21,10 +22,15 @@ public class Enemy : MonoBehaviour
     [SerializeField] AudioClip shootingSFX;
     [SerializeField] [Range(0.0f, 1.0f)] float shootingVolume = 0.5f;
 
+    //cached references
+    GameSession gameSession;
+
     // Start is called before the first frame update
     void Start()
     {
         shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+
+        gameSession = FindObjectOfType<GameSession>();
     }
 
     // Update is called once per frame
@@ -115,6 +121,7 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
+            Debug.Log("Ship Dead");
             Die();
         }
     }
@@ -129,5 +136,8 @@ public class Enemy : MonoBehaviour
         // Instantiate a new explosion on the position of the ship and destroy it after a second
         GameObject explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity) as GameObject;
         Destroy(explosion, explosionDuration);
+
+        // Add to the score the value that this ship gives when killed
+        gameSession.AddToScore(scoreWhenKilled);
     }
 }

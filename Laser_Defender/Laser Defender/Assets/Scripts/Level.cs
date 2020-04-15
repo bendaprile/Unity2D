@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour
 {
+
+    [SerializeField] float loadDelay = 1f;
+
     public void LoadStartScene()
     {
         SceneManager.LoadScene("StartMenu");
+
+        FindObjectOfType<GameSession>().ResetGame();
     }
 
     public void LoadGameScene()
@@ -27,7 +32,7 @@ public class Level : MonoBehaviour
 
     IEnumerator LoadSceneShortDelay(string scene)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(loadDelay);
 
         SceneManager.LoadScene(scene);
     }
