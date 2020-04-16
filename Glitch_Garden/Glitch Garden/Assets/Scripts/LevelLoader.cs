@@ -9,9 +9,13 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] string splashScreenName = "Splash Screen";
     [SerializeField] string startScreenName = "Start Screen";
 
+    int currentSceneIndex;
+
     private void Awake()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        if (currentSceneIndex == 0)
         {
             StartCoroutine(LoadStartSceneAfterDelay());
         }
@@ -32,6 +36,11 @@ public class LevelLoader : MonoBehaviour
     public void LoadSplashScene()
     {
         SceneManager.LoadScene(splashScreenName);
+    }
+
+    public void LoadNextScene()
+    {
+        SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
     public void QuitGame()
