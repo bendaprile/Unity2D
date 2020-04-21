@@ -66,6 +66,8 @@
     <Compile Include="Assets\Scripts\Attacker.cs" />
     <Compile Include="Assets\Scripts\AttackerSpawner.cs" />
     <Compile Include="Assets\Scripts\LevelLoader.cs" />
+    <Compile Include="Assets\Scripts\Projectile.cs" />
+    <Compile Include="Assets\Scripts\Shooter.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/BigBoss/Desktop/Unity Class/Repos/Unity2D/Glitch_Garden/Glitch Garden/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
