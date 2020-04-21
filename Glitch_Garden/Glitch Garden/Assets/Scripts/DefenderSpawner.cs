@@ -31,7 +31,7 @@ public class DefenderSpawner : MonoBehaviour
     {
         // Round x and y so they stick to the exact grid cell that was clicked in
         rawWorldPos.x = Mathf.RoundToInt(rawWorldPos.x);
-        rawWorldPos.y = Mathf.RoundToInt(rawWorldPos.y) + 0.1f;
+        rawWorldPos.y = Mathf.RoundToInt(rawWorldPos.y);
 
         return rawWorldPos;
     }
