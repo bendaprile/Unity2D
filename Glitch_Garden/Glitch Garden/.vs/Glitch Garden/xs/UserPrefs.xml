@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{57519B5A-0702-8D5E-8344-BE203C54CCC3}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Health.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DefenderSpawner.cs">
     <Files>
       <File FileName="Assets/Scripts/LevelLoader.cs" Line="18" Column="30" />
-      <File FileName="Assets/Scripts/Attacker.cs" Line="8" Column="27" />
-      <File FileName="Assets/Scripts/AttackerSpawner.cs" Line="24" Column="29" />
-      <File FileName="Assets/Scripts/Shooter.cs" Line="14" Column="77" />
-      <File FileName="Assets/Scripts/Projectile.cs" Line="13" Column="50" />
-      <File FileName="Assets/Scripts/Health.cs" Line="8" Column="2" />
+      <File FileName="Assets/Scripts/Attacker.cs" />
+      <File FileName="Assets/Scripts/AttackerSpawner.cs" />
+      <File FileName="Assets/Scripts/Shooter.cs" />
+      <File FileName="Assets/Scripts/Projectile.cs" />
+      <File FileName="Assets/Scripts/Health.cs" Line="29" Column="34" />
+      <File FileName="Assets/Scripts/DefenderSpawner.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,7 +15,7 @@
           <Node name="Glitch Garden" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Health.cs" selected="True" />
+                <Node name="DefenderSpawner.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -24,7 +25,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="88a48bd8-8e36-47e0-9cf3-7b7b2959f452" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c51cb51c-cfc3-41ab-a40f-017f023fdc65" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
