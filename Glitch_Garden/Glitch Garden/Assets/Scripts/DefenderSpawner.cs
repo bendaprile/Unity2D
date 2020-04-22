@@ -11,7 +11,24 @@ public class DefenderSpawner : MonoBehaviour
     {
         Vector2 mousePos = GetSquareClicked();
 
-        SpawnDefender(mousePos);
+        AttemptToPlaceDefenderAt(mousePos);
+    }
+
+    private void AttemptToPlaceDefenderAt(Vector2 gridPos)
+    {
+        // Create a reference to the StarDisplay object in our scene
+        var StarDisplay = FindObjectOfType<StarDisplay>();
+
+        // Get the star cost from our defender getter
+        int defenderCost = defender.GetStarCost();
+
+        // Call method in StarDisplay to check if we have enough stars to buy this defender
+        if (StarDisplay.EnoughStarsToPurchase(defenderCost))
+        {
+            // Spawn defender and subtract purchase cost from our stars
+            SpawnDefender(gridPos);
+            StarDisplay.SpendStars(defenderCost);
+        }
     }
 
     private Vector2 GetSquareClicked()
