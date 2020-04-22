@@ -1,8 +1,10 @@
 ﻿<Properties StartupConfiguration="{57519B5A-0702-8D5E-8344-BE203C54CCC3}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DefenderSpawner.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Defender.cs">
     <Files>
-      <File FileName="Assets/Scripts/DefenderSpawner.cs" Line="49" Column="20" />
+      <File FileName="Assets/Scripts/DefenderSpawner.cs" Line="45" Column="6" />
       <File FileName="Assets/Scripts/DefenderButton.cs" Line="8" Column="5" />
+      <File FileName="Assets/Scripts/StarDisplay.cs" Line="15" Column="25" />
+      <File FileName="Assets/Scripts/Defender.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -10,7 +12,7 @@
           <Node name="Glitch Garden" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="DefenderSpawner.cs" selected="True" />
+                <Node name="Defender.cs" selected="True" />
               </Node>
             </Node>
           </Node>

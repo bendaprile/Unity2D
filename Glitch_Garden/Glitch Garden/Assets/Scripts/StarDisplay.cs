@@ -1,18 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StarDisplay : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] int stars = 100;
+    Text starsText;
+
+    private void Start()
     {
-        
+        starsText = GetComponent<Text>();
+
+        UpdateDisplay();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateDisplay()
     {
-        
+        starsText.text = stars.ToString();
+    }
+
+    public void AddStars(int starsToAdd)
+    {
+        stars += starsToAdd;
+        UpdateDisplay();
+    }
+
+    public void SpendStars(int starsCost)
+    {
+        if (starsCost <= stars)
+        {
+            stars -= starsCost;
+            UpdateDisplay();
+        }
     }
 }
