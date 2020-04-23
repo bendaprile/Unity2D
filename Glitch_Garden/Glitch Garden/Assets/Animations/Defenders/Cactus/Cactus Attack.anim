@@ -69,7 +69,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.r
-    path: Cactus Body
+    path: Body
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -124,7 +124,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.g
-    path: Cactus Body
+    path: Body
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -179,7 +179,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.b
-    path: Cactus Body
+    path: Body
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -225,7 +225,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: Cactus Body
+    path: Body
     classID: 212
     script: {fileID: 0}
   m_PPtrCurves:
@@ -449,7 +449,7 @@ AnimationClip:
       value: {fileID: -8861606884115347523, guid: 2fc911af36fe34d82a5b02e670966bfb,
         type: 3}
     attribute: m_Sprite
-    path: Cactus Body
+    path: Body
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 24
@@ -460,35 +460,35 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 4278540080
+      path: 2073732236
       attribute: 2526845255
       script: {fileID: 0}
       typeID: 212
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 4278540080
+      path: 2073732236
       attribute: 2334886179
       script: {fileID: 0}
       typeID: 212
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 4278540080
+      path: 2073732236
       attribute: 0
       script: {fileID: 0}
       typeID: 212
       customType: 23
       isPPtrCurve: 1
     - serializedVersion: 2
-      path: 4278540080
+      path: 2073732236
       attribute: 4215373228
       script: {fileID: 0}
       typeID: 212
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 4278540080
+      path: 2073732236
       attribute: 304273561
       script: {fileID: 0}
       typeID: 212
@@ -641,7 +641,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.r
-    path: Cactus Body
+    path: Body
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -696,7 +696,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.g
-    path: Cactus Body
+    path: Body
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -751,7 +751,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.b
-    path: Cactus Body
+    path: Body
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -797,7 +797,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: Cactus Body
+    path: Body
     classID: 212
     script: {fileID: 0}
   m_EulerEditorCurves: []

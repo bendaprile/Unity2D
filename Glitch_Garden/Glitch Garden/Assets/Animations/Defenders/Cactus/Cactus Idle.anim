@@ -151,8 +151,11 @@ AnimationClip:
     - time: 1.7916666
       value: {fileID: -9207953337077874798, guid: 0c8fcad839e5b43f8843296e447f0ba7,
         type: 3}
+    - time: 1.8333333
+      value: {fileID: -3494450213032369641, guid: 0c8fcad839e5b43f8843296e447f0ba7,
+        type: 3}
     attribute: m_Sprite
-    path: Cactus Body
+    path: Body
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 24
@@ -163,7 +166,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 4278540080
+      path: 2073732236
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -214,12 +217,13 @@ AnimationClip:
     - {fileID: -7738112714811522487, guid: 0c8fcad839e5b43f8843296e447f0ba7, type: 3}
     - {fileID: 631023269412062614, guid: 0c8fcad839e5b43f8843296e447f0ba7, type: 3}
     - {fileID: -9207953337077874798, guid: 0c8fcad839e5b43f8843296e447f0ba7, type: 3}
+    - {fileID: -3494450213032369641, guid: 0c8fcad839e5b43f8843296e447f0ba7, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.8333333
+    m_StopTime: 1.8749999
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
