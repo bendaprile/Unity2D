@@ -11,7 +11,11 @@ public class DefenderSpawner : MonoBehaviour
     {
         Vector2 mousePos = GetSquareClicked();
 
-        AttemptToPlaceDefenderAt(mousePos);
+        //Check if there are any other defenders in the square already
+        if (IsSquareFree(mousePos))
+        {
+            AttemptToPlaceDefenderAt(mousePos);
+        }
     }
 
     private void AttemptToPlaceDefenderAt(Vector2 gridPos)
@@ -29,6 +33,24 @@ public class DefenderSpawner : MonoBehaviour
             SpawnDefender(gridPos);
             StarDisplay.SpendStars(defenderCost);
         }
+    }
+
+    private bool IsSquareFree(Vector2 worldPos)
+    {
+        var defenders = FindObjectsOfType<Defender>();
+
+        foreach (Defender defender in defenders)
+        {
+            bool isSameSquareCloseEnough = (Mathf.Abs(defender.transform.position.x - worldPos.x) <= Mathf.Epsilon)
+                && (Mathf.Abs(defender.transform.position.y - worldPos.y) <= Mathf.Epsilon);
+
+            if (isSameSquareCloseEnough)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private Vector2 GetSquareClicked()

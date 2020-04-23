@@ -7,10 +7,12 @@ public class StarDisplay : MonoBehaviour
 {
     [SerializeField] int stars = 100;
     Text starsText;
+    Color32 starsTextColor;
 
     private void Start()
     {
         starsText = GetComponent<Text>();
+        starsTextColor = starsText.color;
 
         UpdateDisplay();
     }
