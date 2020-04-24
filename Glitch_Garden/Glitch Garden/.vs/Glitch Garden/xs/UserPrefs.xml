@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{57519B5A-0702-8D5E-8344-BE203C54CCC3}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Lizard.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Gravestone.cs">
     <Files>
       <File FileName="Assets/Scripts/DefenderSpawner.cs" Line="37" Column="1" />
       <File FileName="Assets/Scripts/DefenderButton.cs" Line="10" Column="31" />
@@ -7,8 +7,10 @@
       <File FileName="Assets/Scripts/Defender.cs" Line="16" Column="25" />
       <File FileName="Assets/Scripts/AttackerSpawner.cs" Line="33" Column="51" />
       <File FileName="Assets/Scripts/Shooter.cs" Line="42" Column="42" />
-      <File FileName="Assets/Scripts/Attacker.cs" Line="36" Column="32" />
-      <File FileName="Assets/Scripts/Lizard.cs" Line="9" Column="9" />
+      <File FileName="Assets/Scripts/Attacker.cs" Line="14" Column="30" />
+      <File FileName="Assets/Scripts/Lizard.cs" Line="17" Column="43" />
+      <File FileName="Assets/Fox.cs" Line="13" Column="10" />
+      <File FileName="Assets/Scripts/Gravestone.cs" Line="13" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,7 +18,7 @@
           <Node name="Glitch Garden" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Lizard.cs" selected="True" />
+                <Node name="Gravestone.cs" selected="True" />
               </Node>
             </Node>
           </Node>

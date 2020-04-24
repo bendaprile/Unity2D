@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 6899883310477489410}
   - component: {fileID: 6899883310477489411}
   - component: {fileID: 6899883310477489408}
+  - component: {fileID: -8014412318726113521}
   - component: {fileID: 6899883310477489409}
   - component: {fileID: 3952727962085821278}
   m_Layer: 0
@@ -93,6 +94,20 @@ MonoBehaviour:
   projectile: {fileID: 7344352669145540198, guid: d2d39fc82de914610a46f4be0512c8b8,
     type: 3}
   gun: {fileID: 6899883309154052585}
+--- !u!114 &-8014412318726113521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6899883310477489438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9abbe699974b4f20987b658b5164af2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  deathVFX: {fileID: 0}
 --- !u!95 &6899883310477489409
 Animator:
   serializedVersion: 3

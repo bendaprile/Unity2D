@@ -4,23 +4,30 @@ using UnityEngine;
 
 public class Attacker : MonoBehaviour
 {
-    [Range (0f, 5f)]
-    float currentSpeed = 1f;
+    [SerializeField] int damage = 50;
+
+    [Range(0f, 5f)]
+    [SerializeField] float currentSpeed = 1f;
+    
 
     // Reference to the current target we are attacking
     GameObject currentTarget;
-
-    Animator animator;
-
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
 
     // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector2.left * currentSpeed * Time.deltaTime);
+
+        UpdateAnimationState();
+    }
+
+    private void UpdateAnimationState()
+    {
+        if (!currentTarget)
+        {
+            // Don't create a reference to this... it doesn't work for some reason
+            GetComponent<Animator>().SetBool("isAttacking", false);
+        }
     }
 
     // Called by animation events to update the speed of our attacker
@@ -31,8 +38,24 @@ public class Attacker : MonoBehaviour
 
     public void Attack(GameObject target)
     {
-        animator.SetBool("isAttacking", true);
+        // Set our animator to isAttacking = true to change animation
+        GetComponent<Animator>().SetBool("isAttacking", true);
 
+        // Set our current target to the target it collided with
         currentTarget = target;
+    }
+
+    public void StrikeCurrentTarget()
+    {
+        if (!currentTarget) { return; }
+
+        // Grab health component from our currentTarget
+        Health health = currentTarget.GetComponent<Health>();
+
+        if (health)
+        {
+            // Call DealDamage method in health script
+            health.DealDamage(damage);
+        }
     }
 }
