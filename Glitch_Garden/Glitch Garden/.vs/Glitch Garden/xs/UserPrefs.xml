@@ -1,24 +1,20 @@
 ﻿<Properties StartupConfiguration="{57519B5A-0702-8D5E-8344-BE203C54CCC3}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AttackerSpawner.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/DamageCollider.cs">
     <Files>
-      <File FileName="Assets/Scripts/DefenderSpawner.cs" Line="37" Column="1" />
-      <File FileName="Assets/Scripts/DefenderButton.cs" />
-      <File FileName="Assets/Scripts/StarDisplay.cs" />
-      <File FileName="Assets/Scripts/Defender.cs" />
-      <File FileName="Assets/Scripts/AttackerSpawner.cs" Line="39" Column="1" />
-      <File FileName="Assets/Scripts/Shooter.cs" />
-      <File FileName="Assets/Scripts/Attacker.cs" />
-      <File FileName="Assets/Scripts/Lizard.cs" />
-      <File FileName="Assets/Scripts/Gravestone.cs" Line="13" Column="1" />
+      <File FileName="Assets/Scripts/StarDisplay.cs" Line="40" Column="10" />
+      <File FileName="Assets/Scripts/Attacker.cs" Line="14" Column="30" />
+      <File FileName="Assets/LivesLeft.cs" Line="39" Column="41" />
+      <File FileName="Assets/Scripts/LevelLoader.cs" Line="48" Column="46" />
+      <File FileName="Assets/DamageCollider.cs" Line="9" Column="29" />
+      <File FileName="Assets/Scripts/Fox.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Glitch Garden" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="AttackerSpawner.cs" selected="True" />
-              </Node>
+              <Node name="Scripts" expanded="True" />
+              <Node name="DamageCollider.cs" selected="True" />
             </Node>
           </Node>
         </State>
