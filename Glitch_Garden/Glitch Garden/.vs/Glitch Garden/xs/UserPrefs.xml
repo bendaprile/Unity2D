@@ -1,15 +1,14 @@
 ﻿<Properties StartupConfiguration="{57519B5A-0702-8D5E-8344-BE203C54CCC3}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Gravestone.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AttackerSpawner.cs">
     <Files>
       <File FileName="Assets/Scripts/DefenderSpawner.cs" Line="37" Column="1" />
-      <File FileName="Assets/Scripts/DefenderButton.cs" Line="10" Column="31" />
-      <File FileName="Assets/Scripts/StarDisplay.cs" Line="44" Column="2" />
-      <File FileName="Assets/Scripts/Defender.cs" Line="16" Column="25" />
-      <File FileName="Assets/Scripts/AttackerSpawner.cs" Line="33" Column="51" />
-      <File FileName="Assets/Scripts/Shooter.cs" Line="42" Column="42" />
-      <File FileName="Assets/Scripts/Attacker.cs" Line="14" Column="30" />
-      <File FileName="Assets/Scripts/Lizard.cs" Line="17" Column="43" />
-      <File FileName="Assets/Fox.cs" Line="13" Column="10" />
+      <File FileName="Assets/Scripts/DefenderButton.cs" />
+      <File FileName="Assets/Scripts/StarDisplay.cs" />
+      <File FileName="Assets/Scripts/Defender.cs" />
+      <File FileName="Assets/Scripts/AttackerSpawner.cs" Line="39" Column="1" />
+      <File FileName="Assets/Scripts/Shooter.cs" />
+      <File FileName="Assets/Scripts/Attacker.cs" />
+      <File FileName="Assets/Scripts/Lizard.cs" />
       <File FileName="Assets/Scripts/Gravestone.cs" Line="13" Column="1" />
     </Files>
     <Pads>
@@ -18,7 +17,7 @@
           <Node name="Glitch Garden" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Gravestone.cs" selected="True" />
+                <Node name="AttackerSpawner.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -28,7 +27,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="20b61620-d9c3-4614-ace5-3d8e3a16065c" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0645a4c9-477c-4d1b-bb81-dc707272e683" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
