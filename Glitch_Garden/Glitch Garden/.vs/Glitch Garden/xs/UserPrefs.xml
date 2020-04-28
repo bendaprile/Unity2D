@@ -1,13 +1,12 @@
 ﻿<Properties StartupConfiguration="{57519B5A-0702-8D5E-8344-BE203C54CCC3}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameTimer.cs">
     <Files>
-      <File FileName="Assets/Scripts/StarDisplay.cs" Line="40" Column="10" />
-      <File FileName="Assets/Scripts/Attacker.cs" Line="14" Column="30" />
-      <File FileName="Assets/LivesLeft.cs" Line="39" Column="41" />
-      <File FileName="Assets/Scripts/LevelLoader.cs" Line="48" Column="46" />
-      <File FileName="Assets/DamageCollider.cs" Line="21" Column="10" />
-      <File FileName="Assets/Scripts/Fox.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GameTimer.cs" Line="8" Column="9" />
+      <File FileName="Assets/Scripts/AttackerSpawner.cs" Line="42" Column="1" />
+      <File FileName="Assets/LevelController.cs" Line="8" Column="37" />
+      <File FileName="Assets/Scripts/Attacker.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Health.cs" Line="22" Column="1" />
+      <File FileName="Assets/Scripts/DamageCollider.cs" Line="24" Column="71" />
+      <File FileName="Assets/Scripts/GameTimer.cs" Line="23" Column="45" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,7 +24,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0645a4c9-477c-4d1b-bb81-dc707272e683" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="788dd46d-ccf9-4130-b7c6-e80d6c847964" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

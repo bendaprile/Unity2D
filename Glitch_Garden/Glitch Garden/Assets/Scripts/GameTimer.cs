@@ -18,9 +18,10 @@ public class GameTimer : MonoBehaviour
 
         bool timerFinished = (Time.timeSinceLevelLoad >= levelTime);
 
+        // When the timer is finished call LevelTimerFinished in LevelController
         if (timerFinished)
         {
-            Debug.Log("Level Timer Expired!");
+            FindObjectOfType<LevelController>().LevelTimerFinished();
         }
     }
 }

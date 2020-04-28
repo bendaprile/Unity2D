@@ -13,6 +13,18 @@ public class Attacker : MonoBehaviour
     // Reference to the current target we are attacking
     GameObject currentTarget;
 
+    // Called before all initilization and attacker is spawned
+    private void Awake()
+    {
+        FindObjectOfType<LevelController>().AttackerSpawned();
+    }
+
+    // Called after everything and the attacker is destroyed 
+    private void OnDestroy()
+    {
+        FindObjectOfType<LevelController>().AttackerKilled();
+    }
+
     // Update is called once per frame
     void Update()
     {

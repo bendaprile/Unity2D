@@ -43,4 +43,9 @@ public class AttackerSpawner : MonoBehaviour
         // Places the attacker within its parent spawner in the hierarchy for sorting
         newAttacker.transform.parent = transform;
     }
+
+    public void SetSpawn(bool updatedSpawn)
+    {
+        spawn = updatedSpawn;
+    }
 }

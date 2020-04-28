@@ -17,7 +17,9 @@ public class DamageCollider : MonoBehaviour
 
         if (otherObject.GetComponent<Attacker>())
         {
+            // Subtract a life and destroy the attacker
             livesLeft.SubtractLife();
+            Destroy(otherObject);
         }
     }
 }
