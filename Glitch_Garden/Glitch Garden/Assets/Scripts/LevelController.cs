@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
+    [SerializeField] float timeToWaitForNextScene = 3f;
     [SerializeField] int attackersLeft;
     bool levelTimerFinished = false;
+
+    [SerializeField] GameObject winOverlay;
+
+    private void Start()
+    {
+        winOverlay.SetActive(false);
+    }
 
     public void AttackerSpawned()
     {
@@ -18,7 +26,7 @@ public class LevelController : MonoBehaviour
 
         if (attackersLeft <= 0 && levelTimerFinished)
         {
-            Debug.Log("End Level Now");
+            StartCoroutine(HandleWinCondition());
         }
     }
 
@@ -26,11 +34,26 @@ public class LevelController : MonoBehaviour
     {
         levelTimerFinished = true;
 
+        StopSpawners();
+    }
+
+    IEnumerator HandleWinCondition()
+    {
+        // Show win overlay... I'm not adding audio its a waste of time
+        winOverlay.SetActive(true);
+
+        yield return new WaitForSeconds(timeToWaitForNextScene);
+
+        FindObjectOfType<LevelLoader>().LoadNextScene();
+    }
+
+    private void StopSpawners()
+    {
         // Set all attacker spawners spawn variable to false
-        var attackerSpawners = FindObjectsOfType<AttackerSpawner>();
+        AttackerSpawner[] attackerSpawners = FindObjectsOfType<AttackerSpawner>();
         foreach (AttackerSpawner attackerSpawner in attackerSpawners)
         {
-            attackerSpawner.SetSpawn(false);
+            attackerSpawner.StopSpawn();
         }
     }
 }
