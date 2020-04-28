@@ -22,7 +22,11 @@ public class Attacker : MonoBehaviour
     // Called after everything and the attacker is destroyed 
     private void OnDestroy()
     {
-        FindObjectOfType<LevelController>().AttackerKilled();
+        LevelController levelController = FindObjectOfType<LevelController>();
+        if (levelController)
+        {
+            levelController.AttackerKilled();
+        }
     }
 
     // Update is called once per frame

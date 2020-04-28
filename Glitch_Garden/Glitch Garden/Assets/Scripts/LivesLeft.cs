@@ -8,12 +8,8 @@ public class LivesLeft : MonoBehaviour
     [SerializeField] int livesLeft = 10;
     Text livesText;
 
-    // stored reference
-    LevelLoader levelLoader;
-
     private void Start()
     {
-        levelLoader = FindObjectOfType<LevelLoader>();
         livesText = GetComponent<Text>();
         UpdateDisplay();
     }
@@ -36,7 +32,7 @@ public class LivesLeft : MonoBehaviour
 
         if (livesLeft <= 0)
         {
-            levelLoader.LoadLoseScene();
+            FindObjectOfType<LevelController>().LevelLost();
         }
     }
 }

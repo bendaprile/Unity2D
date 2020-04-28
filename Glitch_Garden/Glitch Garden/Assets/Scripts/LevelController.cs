@@ -9,10 +9,12 @@ public class LevelController : MonoBehaviour
     bool levelTimerFinished = false;
 
     [SerializeField] GameObject winOverlay;
+    [SerializeField] GameObject loseOverlay;
 
     private void Start()
     {
         winOverlay.SetActive(false);
+        loseOverlay.SetActive(false);
     }
 
     public void AttackerSpawned()
@@ -35,6 +37,12 @@ public class LevelController : MonoBehaviour
         levelTimerFinished = true;
 
         StopSpawners();
+    }
+
+    public void LevelLost()
+    {
+        loseOverlay.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     IEnumerator HandleWinCondition()
