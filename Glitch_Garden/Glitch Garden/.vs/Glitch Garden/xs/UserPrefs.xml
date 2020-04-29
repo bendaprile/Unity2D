@@ -4,13 +4,10 @@
       <File FileName="Assets/Scripts/AttackerSpawner.cs" Line="49" Column="22" />
       <File FileName="Assets/LevelController.cs" Line="45" Column="29" />
       <File FileName="Assets/Scripts/Attacker.cs" Line="25" Column="79" />
-      <File FileName="Assets/Scripts/Health.cs" Line="16" Column="33" />
-      <File FileName="Assets/Scripts/DamageCollider.cs" Line="22" Column="34" />
-      <File FileName="Assets/Scripts/GameTimer.cs" Line="32" Column="1" />
-      <File FileName="Assets/Scripts/DefenderSpawner.cs" Line="80" Column="9" />
       <File FileName="Assets/Scripts/LivesLeft.cs" Line="34" Column="10" />
-      <File FileName="Assets/Scripts/LevelLoader.cs" Line="60" Column="50" />
-      <File FileName="Assets/Scripts/PlayerPrefsController.cs" Line="7" Column="5" />
+      <File FileName="Assets/MusicPlayer.cs" Line="23" Column="6" />
+      <File FileName="Assets/OptionsController.cs" Line="19" Column="39" />
+      <File FileName="Assets/Scripts/PlayerPrefsController.cs" Line="5" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

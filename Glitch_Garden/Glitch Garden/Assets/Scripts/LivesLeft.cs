@@ -7,9 +7,14 @@ public class LivesLeft : MonoBehaviour
 {
     [SerializeField] int livesLeft = 10;
     Text livesText;
+    float difficulty;
 
     private void Start()
     {
+        difficulty = PlayerPrefsController.GetDifficulty();
+
+        livesLeft = Mathf.RoundToInt(10f / difficulty);
+
         livesText = GetComponent<Text>();
         UpdateDisplay();
     }
