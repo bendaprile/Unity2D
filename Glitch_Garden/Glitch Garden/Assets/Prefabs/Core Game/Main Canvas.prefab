@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b81b4fdf8712a4ef5be34a6de3974d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTime: 10
+  levelTime: 50
 --- !u!1 &1780199774
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d226ce52bdf334f9fa445dc4b3f28a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stars: 1000
+  stars: 800
 --- !u!1 &2416856060141941575
 GameObject:
   m_ObjectHideFlags: 0
