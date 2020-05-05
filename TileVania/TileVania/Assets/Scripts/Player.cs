@@ -109,6 +109,7 @@ public class Player : MonoBehaviour
         // If the player has vertical speed then set its animation state to climbing
         bool playerHasVerticalSpeed = Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon;
         myAnimator.SetBool(isClimbing, playerHasVerticalSpeed);
+        
     }
 
     private void FlipSprite()
