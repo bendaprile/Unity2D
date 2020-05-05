@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     // Config variables
     // Multiplier for our movement speed
     [SerializeField] float runSpeed = 5f;
+    [SerializeField] float jumpSpeed = 5f;
 
     // State variables
     bool isAlive = true;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Run();
+        Jump();
     }
 
     private void Run()
@@ -55,6 +57,20 @@ public class Player : MonoBehaviour
 
         // Will set running animation to true if there is horizontal speed
         myAnimator.SetBool(isRunning, playerHasHorizontalSpeed);
+    }
+
+    private void Jump()
+    {
+
+        bool isTouchingGround = GetComponent<CapsuleCollider2D>().IsTouchingLayers(LayerMask.GetMask("Ground"));
+
+        // If the Jump button is pressed...
+        if (Input.GetButtonDown("Jump") && isTouchingGround)
+        {
+            // Create a new vector 2 with some y velocity and add it to our rigidbody's velocity
+            Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
+            myRigidbody.velocity += jumpVelocityToAdd;
+        }
     }
 
     private void FlipSprite()
