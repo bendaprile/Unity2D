@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // Config variables
     // Multiplier for our movement speed
     [SerializeField] float runSpeed = 5f;
 
-    // stored reference to our rigidbody
+    // State variables
+    bool isAlive = true;
+    string isRunning = "isRunning";
+
+    // Cached component references
     Rigidbody2D myRigidbody;
+    Animator myAnimator;
+
+    // Message then methods
 
     private void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         Run();
@@ -34,5 +41,32 @@ public class Player : MonoBehaviour
 
         // Set the rigidbody's velocity to our player velocity
         myRigidbody.velocity = playerVelocity;
+
+        // Flip sprite to appropriate direction of velocity
+        FlipSprite();
+
+        UpdateRunAnimation();
+    }
+
+    private void UpdateRunAnimation()
+    {
+        // Check if the player has horizontal speed (is he running)
+        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
+
+        // Will set running animation to true if there is horizontal speed
+        myAnimator.SetBool(isRunning, playerHasHorizontalSpeed);
+    }
+
+    private void FlipSprite()
+    {
+        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
+
+        // if the player is moving horizontally
+        if (playerHasHorizontalSpeed)
+        {
+            // reverse the current scaling of the x axis
+            // Mathf.Sign will return -1 when number is negative and +1 when number is positive
+            transform.localScale = new Vector2(Mathf.Sign(myRigidbody.velocity.x), 1f);
+        }
     }
 }
