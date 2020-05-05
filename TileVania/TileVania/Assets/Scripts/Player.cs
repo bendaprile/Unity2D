@@ -8,14 +8,19 @@ public class Player : MonoBehaviour
     // Multiplier for our movement speed
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpSpeed = 5f;
+    [SerializeField] float climbSpeed = 1f;
+    [SerializeField] float horizontalLadderSpeedMultiplier = 0.5f;
 
     // State variables
+    float gravityScaleAtStart;
     bool isAlive = true;
     string isRunning = "isRunning";
+    string isClimbing = "isClimbing";
 
     // Cached component references
     Rigidbody2D myRigidbody;
     Animator myAnimator;
+    Collider2D myCollider2D;
 
     // Message then methods
 
@@ -23,16 +28,22 @@ public class Player : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        myCollider2D = GetComponent<Collider2D>();
+
+        gravityScaleAtStart = myRigidbody.gravityScale;
     }
 
     void Update()
     {
         Run();
         Jump();
+        ClimbLadder();
     }
 
     private void Run()
     {
+        myRigidbody.gravityScale = 1f;
+
         // Grab the value of the horizontal axis' input
         float controlThrow = Input.GetAxis("Horizontal"); // value is from -1 to +1
 
@@ -61,8 +72,8 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-
-        bool isTouchingGround = GetComponent<CapsuleCollider2D>().IsTouchingLayers(LayerMask.GetMask("Ground"));
+        // bool to hold if our collider is touching the collider on the ground layer
+        bool isTouchingGround = myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground"));
 
         // If the Jump button is pressed...
         if (Input.GetButtonDown("Jump") && isTouchingGround)
@@ -71,6 +82,33 @@ public class Player : MonoBehaviour
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             myRigidbody.velocity += jumpVelocityToAdd;
         }
+    }
+
+    private void ClimbLadder()
+    {
+        // Bool to keep track of whether we are colliding with a ladder or not
+        bool isTouchingLadder = myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ladder"));
+
+        // if we're not touching the ladder then set animation back to idle
+        // and gravityScale back to what it started at
+        if (!isTouchingLadder)
+        {
+            myAnimator.SetBool(isClimbing, false);
+            myRigidbody.gravityScale = gravityScaleAtStart;
+            return;
+        }
+
+        // Get rid of gravity for our player and grab our control throw in the vertical direction
+        myRigidbody.gravityScale = 0f;
+        float controlThrow = Input.GetAxis("Vertical"); // value is from -1 to +1
+
+        // Set our y velocity and then set myRigidBody's velocity
+        Vector2 climbVelocity = new Vector2(myRigidbody.velocity.x * horizontalLadderSpeedMultiplier, controlThrow * climbSpeed);
+        myRigidbody.velocity = climbVelocity;
+
+        // If the player has vertical speed then set its animation state to climbing
+        bool playerHasVerticalSpeed = Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon;
+        myAnimator.SetBool(isClimbing, playerHasVerticalSpeed);
     }
 
     private void FlipSprite()
