@@ -20,7 +20,8 @@ public class Player : MonoBehaviour
     // Cached component references
     Rigidbody2D myRigidbody;
     Animator myAnimator;
-    Collider2D myCollider2D;
+    CapsuleCollider2D myBodyCollider;
+    BoxCollider2D myFeetCollider;
 
     // Message then methods
 
@@ -28,7 +29,8 @@ public class Player : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        myCollider2D = GetComponent<Collider2D>();
+        myBodyCollider = GetComponent<CapsuleCollider2D>();
+        myFeetCollider = GetComponent<BoxCollider2D>();
 
         gravityScaleAtStart = myRigidbody.gravityScale;
     }
@@ -73,7 +75,7 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         // bool to hold if our collider is touching the collider on the ground layer
-        bool isTouchingGround = myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground"));
+        bool isTouchingGround = myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
 
         // If the Jump button is pressed...
         if (Input.GetButtonDown("Jump") && isTouchingGround)
@@ -87,7 +89,7 @@ public class Player : MonoBehaviour
     private void ClimbLadder()
     {
         // Bool to keep track of whether we are colliding with a ladder or not
-        bool isTouchingLadder = myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ladder"));
+        bool isTouchingLadder = myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ladder"));
 
         // if we're not touching the ladder then set animation back to idle
         // and gravityScale back to what it started at
