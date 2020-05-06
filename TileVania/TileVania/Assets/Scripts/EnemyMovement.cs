@@ -21,16 +21,6 @@ public class EnemyMovement : MonoBehaviour
         FlipEnemy();
     }
 
-    // Will trigger when the capsule collider collides with a wall or player
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // If the collision was with a wall then we will flip the enemy
-        if (!collision.gameObject.GetComponent<Player>())
-        {
-            FlipEnemy();
-        }
-    }
-
     void FlipEnemy()
     {
         // Reverse the velocity of our enemy
@@ -40,4 +30,15 @@ public class EnemyMovement : MonoBehaviour
         // Mathf.Sign will return -1 when number is negative and +1 when number is positive
         transform.localScale = new Vector2(Mathf.Sign(myRigidbody.velocity.x), 1f);
     }
+
+    // This isn't necessary it turns out
+    //// Will trigger when the capsule collider collides with a wall or player
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    // If the collision was with a wall then we will flip the enemy
+    //    if (!collision.gameObject.GetComponent<Player>())
+    //    {
+    //        FlipEnemy();
+    //    }
+    //}
 }

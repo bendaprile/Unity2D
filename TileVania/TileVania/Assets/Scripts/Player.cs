@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 1f;
     [SerializeField] float horizontalLadderSpeedMultiplier = 0.5f;
+    [SerializeField] Vector2 deathKick = new Vector2(0f, 15f);
 
     // State variables
     float gravityScaleAtStart;
@@ -37,9 +38,13 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        // If our character is not alive we don't want to do any of this
+        if (!isAlive) { return; }
+
         Run();
         Jump();
         ClimbLadder();
+        PlayerDeath();
     }
 
     private void Run()
@@ -125,5 +130,30 @@ public class Player : MonoBehaviour
             // Mathf.Sign will return -1 when number is negative and +1 when number is positive
             transform.localScale = new Vector2(Mathf.Sign(myRigidbody.velocity.x), 1f);
         }
+    }
+
+    private void PlayerDeath()
+    {
+
+        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy")))
+        {
+            TriggerDeath();
+        }
+
+        if (myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Hazard")))
+        {
+            TriggerDeath();
+        }
+    }
+
+    private void TriggerDeath()
+    {
+        isAlive = false;
+
+        // Set our animation to death animation
+        myAnimator.SetTrigger("Death");
+
+        // Set velocity so our player flings upwards
+        myRigidbody.velocity = deathKick;
     }
 }
