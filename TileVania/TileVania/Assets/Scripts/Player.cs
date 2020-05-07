@@ -155,5 +155,8 @@ public class Player : MonoBehaviour
 
         // Set velocity so our player flings upwards
         myRigidbody.velocity = deathKick;
+
+        // Process the player death depending on how many lives are left
+        FindObjectOfType<GameSession>().ProcessPlayerDeath();
     }
 }
