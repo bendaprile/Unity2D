@@ -5,6 +5,7 @@ using UnityEngine;
 public class CoinPickup : MonoBehaviour
 {
 
+    [SerializeField] int coinPickupScore = 100;
     [SerializeField] AudioClip coinPickupSFX;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -17,6 +18,9 @@ public class CoinPickup : MonoBehaviour
         {
             Debug.Log("No Coin Pickup SFX Assigned!");
         }
+
+        FindObjectOfType<GameSession>().IncreaseScore(coinPickupScore);
+
         Destroy(gameObject);
     }
 }
